@@ -1,4 +1,4 @@
-# cppProject
+# C++ Project
 This is my submission for assignment #7 from the project list for the C++ Object
 Oriented Programming course (Fall semester 2018)
 
