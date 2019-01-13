@@ -4,7 +4,7 @@ Oriented Programming course (Fall semester 2018)
 
 The prompts written below:
 
-##General guidelines
+## General guidelines
 Global variables may not be used in any of the assignments.
 Classes that are to be saved to a file must provide overloaded operators for writing to and reading from a
 file. A class may provide a separate member function for interactive entry of values.
@@ -22,7 +22,7 @@ Ask questions and discuss your design decisions with the instructor and other st
 exchanging ideas is an essential part of the learning process.
 Assignments 11 and 12 are more challenging than 1 – 10.
 
-##Assignment 7
+## Assignment 7
 Write a program to keep record of names, addresses and telephone numbers.
 Each structure contains the following information:
 - Name
