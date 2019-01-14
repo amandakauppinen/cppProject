@@ -131,7 +131,6 @@ public:
 		ofs << "";
 		ofs.close();
 	}
-	//~Contact();
 };
 
 int main()
