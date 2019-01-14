@@ -131,6 +131,7 @@ public:
 		ofs << "";
 		ofs.close();
 	}
+	
 };
 
 int main()
@@ -141,13 +142,14 @@ int main()
 	string erase, name, city;
 	int i = 0;
 	Contact record;
-	ifstream recordFile("records.txt");
 
 	//calls function to check the contents of the file
 	check();
 
 	//while loop to hold switch-case
 	while (exit) {
+		ifstream recordFile("records.txt");
+		ifstream recordFile2("records.txt");
 		cout << endl << endl << "Please choose an option below:" << endl << "1) Add your (or another person's) record to phonebook"
 			<< endl << "2) Remove record from phonebook" << endl << "3) Search record by city name" << endl <<
 			"4) Print all records" << endl << "5) Clear all records" << endl << "6) Exit" << endl << endl;
@@ -158,9 +160,9 @@ int main()
 		}
 
 		switch (selection) {
-			//first case is for entering details-when selected, the user is prompted to enter
-			//all of the fields, they are added as data members to the Contact class, and sent to 
-			//the function meant for writing the info to the file
+		//first case is for entering details-when selected, the user is prompted to enter
+		//all of the fields, they are added as data members to the Contact class, and sent to 
+		//the function meant for writing the info to the file
 		case 1:
 			cout << "Please enter the following details;" << endl << "Name:" << endl;
 			record.getName();
@@ -179,8 +181,8 @@ int main()
 			system("CLS");
 			record.deleteLine();
 			break;
-			//searches by city, displaying only those contacts residing in the inputted city
-			//calls citySearch sending the ifstream and input as parameters 
+		//searches by city, displaying only those contacts residing in the inputted city
+		//calls citySearch sending the ifstream and input as parameters 
 		case 3:
 			system("CLS");
 			cout << "Please enter the city you would like to search by:" << endl;
@@ -188,24 +190,26 @@ int main()
 			//needed to put 2 getlines because of '\n' troubles
 			getline(cin, city);
 			citySearch(recordFile, city);
+			recordFile.close();
 			break;
-			//prints all records-program asks user for what relative they would like to search by
-			//program prints relative's contact info first, and then every contact who has the input
-			//listed as a relative
+		//prints all records-program asks user for what relative they would like to search by
+		//program prints relative's contact info first, and then every contact who has the input
+		//listed as a relative
 		case 4:
 			//used to reset the file pointer
 			system("CLS");
-			recordFile.clear();
-			recordFile.seekg(0, ios::beg);
+			recordFile2.clear();
+			recordFile2.seekg(0, ios::beg);
 			//sends ifstream and input as parameters to relativeSearch
 			cout << "You have chosen to print all records" << endl << endl << "Please enter the name of the relative to sort by:"
 				<< "Please note that if the relative is in the system, his/her record will appear first followed by his/her relatives" << endl;
 			getline(cin, name);
 			getline(cin, name);
-			relativeSearch(recordFile, name);
+			relativeSearch(recordFile2, name);
+			recordFile2.close();
 			break;
-			//option to erase all records, user is prompted again if they would like to erase, if yes
-			//it goes to the clearRecords function, if no it returns to main menu
+		//option to erase all records, user is prompted again if they would like to erase, if yes
+		//it goes to the clearRecords function, if no it returns to main menu
 		case 5:
 			system("CLS");
 			cout << "Are you sure you wish to erase all records? [Yes/No]" << endl;
@@ -225,7 +229,7 @@ int main()
 				cout << "You have entered an invalid character, please try again" << endl << endl;
 			}
 			break;
-			//shuts down program
+		//shuts down program
 		case 6:
 			system("CLS");
 			cout << endl << "Program is closing" << endl;
